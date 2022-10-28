@@ -57,7 +57,7 @@ button:active {
 }
 
 .main {
-  background-image: url("/CheeseAcademy/img/vintage-paper-7-1560x2355.jpg");
+  background-image: url("../img/vintage-paper-7-1560x2355.jpg");
   width: 100%;
   display: flex;
   justify-content: center;

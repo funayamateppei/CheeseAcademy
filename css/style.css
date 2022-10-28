@@ -313,7 +313,7 @@ header {
 /* ---------top-wrapper---------- */
 .top-wrapper {
 	position: relative;
-	background-image: url('/CheeseAcademy/img/mainbg.png');
+	background-image: url('../img/mainbg.png');
 	opacity: 0.8;
 	background-size: cover;
 	display: flex;
