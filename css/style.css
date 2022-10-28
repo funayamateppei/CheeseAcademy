@@ -1,0 +1,831 @@
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yomogi&display=swap');
+
+/* レスポンシブ */
+
+/* タブレット用 960px以下適用 */
+@media (max-width: 960px) {
+	body {
+		overflow-x: hidden;
+	}
+
+	.top h1 {
+		font-size: 35px !important;
+	}
+
+	.top h2 {
+		font-size: 30px !important;
+	}
+
+	.lesson {
+		display: block !important;
+		width: 100%;
+		margin: 0 auto;
+	}
+
+	.lesson img {
+		width: 100% !important;
+		margin: 0 auto;
+	}
+
+	.lesson .explanation {
+		width: 100% !important;
+		margin: 0;
+		padding: 20px;
+		text-align: center;
+	}
+
+	.contact label {
+		font-size: 14px !important;
+	}
+
+	.contact .checkbox p {
+		font-size: 12px;
+	}
+
+	.nav-links {
+		position: absolute;
+		top: 60px;
+		right: 0;
+		/* ↑固定↑ */
+		width: 150px !important;
+		height: 300px !important;
+		transform: translateX(100%);
+		/* ↑画面外に移動させ、見えなくする↑ */
+	}
+
+	.nav-links ul {
+		width: 150px;
+		flex-direction: column;
+		align-items: center !important;
+		border-radius: 4px !important;
+		background: linear-gradient(to right, rgb(252, 223, 155), rgb(255, 179, 0));
+	}
+
+	.nav-links a {
+		opacity: 0;
+		/* hambarger が表示されるから元々あったアンカーリンクを透明化 */
+	}
+
+	.none {
+		display: block !important;
+		/* hamburger menu の display: none; を解除 */
+	}
+}
+
+/* hambarger:actionでJSで付与  aタグが右から表示される */
+@keyframes listAnimation {
+	0% {
+		opacity: 0;
+		transform: translateX(50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+/* スマホ用 520px以下適用 */
+@media (max-width: 520px) {
+	.top h1 {
+		font-size: 24px !important;
+	}
+
+	.top p {
+		font-size: 20px !important;
+	}
+
+	.top-wrapper {
+		height: 400px !important;
+	}
+
+	p {
+		font-size: 0.8em !important;
+	}
+
+	.box {
+		text-align: center;
+	}
+
+	form label {
+		margin-right: 0 !important;
+		margin-left: 0 !important;
+		font-size: 16px;
+	}
+
+	.form {
+		display: inline-block;
+	}
+
+	.contact .box {
+		display: block;
+	}
+
+	input[type="checkbox"]::after {
+		left: 36px !important;
+	}
+
+	.input {
+		padding-left: 30px;
+	}
+
+	.information {
+		display: block !important;
+	}
+
+	ul {
+		display: block !important;
+	}
+
+	ul li {
+		text-align: center;
+		width: 100% !important;
+		padding: 0 !important;
+	}
+
+	.li2 {
+		margin-bottom: 15px !important;
+	}
+}
+
+
+
+
+
+/*全体　共通
+最初から設定してあるので特に変更
+しなくても大丈夫です♪
+-----------------*/
+body {
+	font-family: Roboto, "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+	line-height: 1.75;
+	font-size: 16px;
+}
+
+
+/*　パディングをサイズ内側にする処理　*/
+* {
+	padding: 0;
+	margin: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/*ーーーーーーーーーーー*/
+/*この下から記述*/
+/*ーーーーーーーーーーー*/
+
+/* 全体 */
+* {
+	font-family: "Robot", "游ゴシック体", "游ゴシック";
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	width: 100%;
+	margin: 0 auto;
+}
+
+h2 {
+	text-shadow: 2px 2px gray;
+	font-size: 36px !important;
+	font-family: 'Caveat', cursive;
+}
+
+.container {
+	width: 80%;
+}
+
+
+/* ---------header---------- */
+header {
+	position: fixed;
+	opacity: 0.7;
+	background: linear-gradient(to right, white, rgb(255, 179, 0));
+	width: 100%;
+	height: 60px;
+	z-index: 1;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	line-height: 60px;
+	width: 90%;
+	margin: 0 auto;
+}
+
+.logo {
+	width: 30%;
+	margin-left: 60px;
+}
+
+.logo img {
+	height: 40px;
+	width: 190px;
+}
+
+.nav-links {
+	width: 50%;
+	flex: 1;
+	transition: 0.5s;
+}
+
+.nav-links ul {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.nav-links a {
+	height: 60px;
+	width: 100px;
+	border-radius: 4px;
+	text-align: center;
+	color: black;
+}
+
+.nav-links a:hover {
+	background-color: beige;
+	font-weight: bold;
+	transition: 0.5s;
+}
+
+/* hambargerは画面幅960px以上では表示しないから display:none; */
+.none {
+	display: none;
+}
+
+/* hamburger のブロックの詳細 */
+.navbar {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	line-height: 100px;
+	margin-left: 100px;
+	width: 60px;
+	height: 60px;
+	cursor: pointer;
+}
+
+/* hamburgerの３本線それぞれの設定  */
+.line {
+	background-color: white;
+	border-radius: 2px;
+	margin: 2px;
+	width: 25px;
+	height: 4px;
+	opacity: 0.7;
+	transition: 0.5s;
+}
+
+/* hamburger を押したらこのclassをJSで付与して画面外から画面内へ */
+.nav-active {
+	transform: translateX(0%) !important;
+}
+
+/* hamburger → × animation JSで付与
+		div class=navbar にclass=toggleが付与されることで適用される */
+.toggle .line1 {
+	transform: rotate(-405deg) translate(-5px, 6px);
+	transition: 0.5s;
+}
+
+.toggle .line2 {
+	opacity: 0;
+}
+
+.toggle .line3 {
+	transform: rotate(405deg) translate(-5px, -6px);
+	transition: 0.5s;
+}
+
+
+/* ---------top-wrapper---------- */
+.top-wrapper {
+	position: relative;
+	background-image: url('/CheeseAcademy/img/mainbg.png');
+	opacity: 0.8;
+	background-size: cover;
+	display: flex;
+	align-items: center;
+	height: 550px;
+	width: 100%;
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+		will-change: filter;
+		transform: translateY(20px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.top {
+	color: white;
+	text-align: center;
+	margin: 0 auto;
+	/* フェードイン */
+	opacity: 0;
+	animation-duration: 0.8s;
+	/* 何秒間か？keyframesの%で使用 */
+	animation-delay: 0.4s;
+	/* 何秒遅れて開始するか */
+	animation-iteration-count: 1;
+	/* アニメーションの繰り返し回数 */
+	animation-fill-mode: forwards;
+	/* keyframesの100%がアニメーション終了後適用される*/
+	animation-name: fadeIn;
+	/* keyframesで使用する名前*/
+}
+
+.top-wrapper h1 {
+	font-size: 48px;
+	margin-bottom: 40px;
+	text-shadow: 4px 4px #ba9907;
+	font-family: 'Dela Gothic One', cursive;
+	font-weight: normal;
+}
+
+.top-wrapper p {
+	font-size: 36px;
+	text-shadow: 3px 3px #ba9907;
+	font-weight: bold;
+	font-family: 'Yomogi', cursive !important;
+}
+
+
+
+/* ---------ABOUT---------- */
+.about {
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+.about h2 {
+	padding-top: 120px;
+	color: #ffd61a;
+	font-size: 24px;
+}
+
+.about h3 {
+	margin-top: 24px;
+	margin-bottom: 64px;
+	font-weight: normal;
+}
+
+.about p {
+	margin-bottom: 40px;
+}
+
+.slider1 img {
+	margin-top: 40px;
+	width: 100%;
+}
+
+/* -----------COURSE------------ */
+.courses {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.course-top {
+	padding: 64px 0;
+	text-align: center;
+}
+
+.course-top h2 {
+	font-size: 24px;
+	color: #222222;
+	margin-bottom: 15px;
+}
+
+.courses {
+	background-color: #efefef;
+}
+
+.lesson {
+	display: flex;
+	align-items: center;
+}
+
+.reverce {
+	flex-direction: row-reverse;
+}
+
+.lesson img,
+.lesson .explanation {
+	width: 50%;
+	transition: 0.5s;
+}
+
+.lesson img:hover {
+	transform: scale(1.04);
+	transition: 0.5s;
+}
+
+.lesson h3 {
+	font-size: 24px;
+	color: #222222;
+	margin-bottom: 40px;
+}
+
+.explanation {
+	display: inline-block;
+	padding-left: 48px;
+}
+
+
+/* -----------NEWS------------- */
+.news-top {
+	text-align: center;
+	padding: 64px 0;
+}
+
+.news-top h2 {
+	margin-top: 120px;
+	color: #ffd61a;
+	font-size: 24px;
+}
+
+.news-item {
+	width: 80%;
+	margin: 0 20px;
+}
+
+.news-item:hover {
+	opacity: 0.7;
+	transition: 0.5s;
+}
+
+.news-item img {
+	width: 100%;
+	margin: 0 auto 32px auto;
+}
+
+p[class="news-day"] {
+	width: 100%;
+	margin: 0 auto 7px auto;
+	text-align: right;
+}
+
+.news-item p[class="news-sentence"] {
+	width: 100%;
+	margin: 0 auto;
+	text-align: left;
+}
+
+.slider2 {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.news-sentence {
+	/* スライダーの文章を５行までしか表示しない */
+	/* IEは対応してないからmax-heightで対応 */
+	display: -webkit-box;
+	-webkit-line-clamp: 5;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+
+	/* IE対応 */
+	line-height: 30px;
+	max-height: 150px;
+}
+
+
+.slick-prev::before {
+	font-size: 25px;
+	color: orange;
+}
+
+.slick-next::before {
+	font-size: 25px;
+	color: orange;
+}
+
+
+
+.news .btn {
+	display: flex;
+	justify-content: center;
+	width: 300px;
+	height: 60px;
+	margin: 0 auto;
+}
+
+.news .btn button {
+	border-radius: 4px;
+	width: 300px;
+	height: 60px;
+	font-size: 24px;
+	background-color: #ffd61a;
+	color: white;
+	margin: 56px 0 48px 0;
+	box-shadow: 0 6px #ba9907;
+	transition: 0.2s;
+}
+
+.news .btn button:hover {
+	background-color: #f5d751;
+}
+
+.news .btn button:active {
+	box-shadow: none;
+	transform: translate3d(0, 6px, 0);
+	transition: 0.2s;
+}
+
+
+/* ------------- ACCESS -------------- */
+.access {
+	margin-top: 120px;
+	background-color: #fafafa;
+	padding-bottom: 60px;
+}
+
+.access-top {
+	text-align: center;
+	padding: 64px 0;
+}
+
+.access-top h2 {
+	margin-bottom: 24px;
+}
+
+.map {
+	margin-bottom: 64px;
+}
+
+iframe {
+	width: 100%;
+}
+
+.information {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+ul {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.li1 {
+	width: 120px;
+	margin-right: 20px;
+	padding-bottom: 10px;
+}
+
+.li2 {
+	width: 350px;
+	padding-bottom: 10px;
+}
+
+
+/* ----------- CONTACT ------------- */
+.contact-top {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 64px 0;
+}
+
+.contact-top h2 {
+	margin-bottom: 24px;
+}
+
+.contact-middle {
+	text-align: center;
+}
+
+.contact-middle p+p {
+	margin-top: 32px;
+}
+
+
+
+
+form {
+	margin-top: 80px;
+}
+
+.text {
+	margin-bottom: 24px;
+}
+
+.checkbox {
+	padding: 16px 0 8px 0;
+	margin: 0;
+}
+
+form input,
+form textarea {
+	border: 1px solid #bfbfbf;
+}
+
+form .text label,
+form .checkbox>label,
+form .textarea label {
+	display: inline-block;
+	width: 120px;
+	margin-right: 100px;
+}
+
+.box {
+	display: flex;
+	justify-content: center;
+}
+
+form .text input {
+	width: 328px;
+	height: 36px;
+}
+
+.check {
+	width: 328px;
+}
+
+.input input {
+	margin-right: 40px;
+}
+
+.check p {
+	margin-left: 60px;
+	font-size: 14px;
+}
+
+.input {
+	margin-bottom: 24px;
+	display: block;
+	display: flex;
+	position: relative;
+	cursor: pointer;
+	user-select: none;
+}
+
+/* チェックボックスのデフォルトcssを解除 */
+input[type="checkbox"] {
+	margin: 0;
+	padding: 0;
+	background: none;
+	border: none;
+	border-radius: 0;
+	outline: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+input[type="checkbox"]::before,
+input[type="checkbox"]::after {
+	content: "";
+	display: block;
+	position: absolute;
+	cursor: pointer;
+}
+
+/* チェックボックスの形成 */
+input[type="checkbox"]::before {
+	background-color: #f0ebe5;
+	border-radius: 4px;
+	height: 24px;
+	width: 24px;
+	top: 0;
+}
+
+/* チェックの形成 */
+input[type="checkbox"]::after {
+	border-bottom: 3px solid #666464;
+	/*チェックの太さ*/
+	border-left: 3px solid #666464;
+	/*チェックの太さ*/
+	transform: rotate(-45deg);
+	border-radius: 4px;
+	height: 9px;
+	width: 12px;
+	top: 7px;
+	left: 6px;
+	opacity: 0;
+}
+
+/* checked属性になったらopacity: 1; にしてチェック出現 */
+input[type="checkbox"]:checked::after {
+	opacity: 1;
+}
+
+
+.box textarea {
+	width: 328px;
+	height: 108px;
+}
+
+.form {
+	width: 390px;
+}
+
+.textarea {
+	margin: 0;
+}
+
+.contact .btn {
+	display: flex;
+	justify-content: center;
+}
+
+.contact button {
+	border-radius: 4px;
+	width: 298px;
+	height: 54px;
+	font-size: 18px;
+	background-color: #ffd61a;
+	color: white;
+	margin: 40px 0 120px 0;
+	box-shadow: 0 6px #ba9907;
+	transition: 0.5s;
+}
+
+.contact button:hover {
+	background-color: #f5d751;
+	transition: 0.5s;
+}
+
+.contact button:active {
+	box-shadow: none;
+	transform: translate3d(0, 6px, 0);
+	transition: 0.1s;
+}
+
+
+
+
+
+/* -------------- page-top --------------- */
+.page-top button {
+	font-size: 45px;
+	height: 45px;
+	width: 45px;
+	background-color: beige;
+	border-radius: 50%;
+	position: fixed;
+	right: 30px;
+	bottom: 22px;
+	z-index: 100;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: 0.5s;
+	opacity: 0.5;
+}
+
+.page-top button:hover {
+	transform: scale(1.1);
+	transition: 0.5s;
+	opacity: 1;
+}
+
+.page-top button:active {
+	transform: scale(1);
+	transition: 0.5s;
+}
+
+.page-top p {
+	position: fixed;
+	right: 8px;
+	bottom: 65px;
+	font-size: 16px;
+	color: gray;
+	opacity: 0.5;
+}
+
+
+
+/* -------------- footer --------------- */
+footer {
+	width: 100%;
+	background-color: #a9a9a9;
+	font-size: 18px;
+}
+
+footer p {
+	padding: 32px 0;
+	text-align: center;
+	color: white;
+}
